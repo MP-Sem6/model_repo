@@ -63,7 +63,7 @@ rf_model = pickle.load(open("artifacts/Rforest.sav", 'rb'))
 
 
 # 5. SVM
-svm_model = pickle.load(open("artifacts/svm_model.sav", 'rb'))
+svm_model = pickle.load(open("artifacts/svm_model.pkl", 'rb'))
 #modelsvm_path = os.path.join(os.path.dirname(__file__), "artifacts", "svm_model.pkl")
 #with open(modelsvm_path, 'rb') as modelsvm_file:
 #    svm_model = pickle.load(modelsvm_file)
