@@ -29,15 +29,15 @@ for item in files_and_dirs:
     st.write(item)
 
 
-model_path = os.path.join(os.path.dirname(__file__), "artifacts", "DT_model.sav")
+#model_path = os.path.join(os.path.dirname(__file__), "artifacts", "DT_model.sav")
 
 # Debugging: Check if the path is correct
-st.write("Model Path:", model_path)
-st.write("File Exists:", os.path.exists(model_path))
+#st.write("Model Path:", model_path)
+#st.write("File Exists:", os.path.exists(model_path))
 
 # Load the model
 #with open(model_path, 'rb') as model_file:
-load_model = pickle.load(open(model_path, 'rb'))
+load_model = pickle.load(open("artifacts/DT_model.sav", 'rb'))
 
 #List of the symptoms is listed here in list l1.
 l1=['back_pain','constipation','abdominal_pain','diarrhoea','mild_fever','yellow_urine',
