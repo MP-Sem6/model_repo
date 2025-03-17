@@ -62,6 +62,19 @@ l1=['back_pain','constipation','abdominal_pain','diarrhoea','mild_fever','yellow
     'silver_like_dusting','small_dents_in_nails','inflammatory_nails','blister','red_sore_around_nose',
     'yellow_crust_ooze']
 
+disease=['Fungal infection', 'Allergy', 'GERD', 'Chronic cholestasis',
+       'Drug Reaction', 'Peptic ulcer diseae', 'AIDS', 'Diabetes ',
+       'Gastroenteritis', 'Bronchial Asthma', 'Hypertension ', 'Migraine',
+       'Cervical spondylosis', 'Paralysis (brain hemorrhage)', 'Jaundice',
+       'Malaria', 'Chicken pox', 'Dengue', 'Typhoid', 'hepatitis A',
+       'Hepatitis B', 'Hepatitis C', 'Hepatitis D', 'Hepatitis E',
+       'Alcoholic hepatitis', 'Tuberculosis', 'Common Cold', 'Pneumonia',
+       'Dimorphic hemmorhoids(piles)', 'Heart attack', 'Varicose veins',
+       'Hypothyroidism', 'Hyperthyroidism', 'Hypoglycemia',
+       'Osteoarthristis', 'Arthritis',
+       '(vertigo) Paroymsal  Positional Vertigo', 'Acne',
+       'Urinary tract infection', 'Psoriasis', 'Impetigo']
+
 def predict_disease(clf, symptoms):
     # Convert symptoms into a feature vector
     l2 = [1 if symptom in symptoms else 0 for symptom in l1]
