@@ -11,24 +11,24 @@ import pickle
 import streamlit as st
 #import sklearn
 
-'''
-import os
+
+#import os
 # Title of the app
-st.title("File Directory Checker")
+#st.title("File Directory Checker")
 # Get the current working directory
-current_directory = os.getcwd()
+#current_directory = os.getcwd()
 
 # Display the current directory
-st.write("Current Directory:", current_directory)
+#st.write("Current Directory:", current_directory)
 
 # List files and directories in the current directory
-files_and_dirs = os.listdir(current_directory)
+#files_and_dirs = os.listdir(current_directory)
 
 # Display the files and directories
-st.write("Files and Directories:")
-for item in files_and_dirs:
-    st.write(item)
-'''
+#st.write("Files and Directories:")
+#for item in files_and_dirs:
+#    st.write(item)
+
 
 #model_path = os.path.join(os.path.dirname(__file__), "artifacts", "DT_model.sav")
 
