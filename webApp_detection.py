@@ -35,35 +35,35 @@ import os
 #st.write("File Exists:", os.path.exists(model_path))
 
 # 1. Decision tree
-dt_model = pickle.load(open("/artifacts/DT_model.sav", 'rb'))
+dt_model = pickle.load(open("artifacts/DT_model.sav", 'rb'))
 #model_path = os.path.join(os.path.dirname(__file__), "artifacts", "DT_model.sav")
 #with open(model_path, 'rb') as model_file:
 #    dt_model = pickle.load(model_file)
 
 
 # 2. KNN
-knn_model = pickle.load(open("/artifacts/knn_model.sav", 'rb'))
+knn_model = pickle.load(open("artifacts/knn_model.sav", 'rb'))
 #modelknn_path = os.path.join(os.path.dirname(__file__), "artifacts", "knn_model.sav")
 #with open(modelknn_path, 'rb') as modelknn_file:
 #    knn_model = pickle.load(modelknn_file)
 
 
 # 3. NBayes
-nb_model = pickle.load(open("/artifacts/NBayes.sav", 'rb'))
+nb_model = pickle.load(open("artifacts/NBayes.sav", 'rb'))
 #modelnb_path = os.path.join(os.path.dirname(__file__), "artifacts", "NBayes.sav")
 #with open(modelnb_path, 'rb') as modelnb_file:
 #    nb_model = pickle.load(modelnb_file)
 
 
 # 4. Random Forest
-rf_model = pickle.load(open("/artifacts/Rforest.sav", 'rb'))
+rf_model = pickle.load(open("artifacts/Rforest.sav", 'rb'))
 #modelrf_path = os.path.join(os.path.dirname(__file__), "artifacts", "Rforest.sav")
 #with open(modelrf_path, 'rb') as modelrf_file:
 #    rf_model = pickle.load(modelrf_file)
 
 
 # 5. SVM
-svm_model = pickle.load(open("/artifacts/svm_model.sav", 'rb'))
+svm_model = pickle.load(open("artifacts/svm_model.sav", 'rb'))
 #modelsvm_path = os.path.join(os.path.dirname(__file__), "artifacts", "svm_model.pkl")
 #with open(modelsvm_path, 'rb') as modelsvm_file:
 #    svm_model = pickle.load(modelsvm_file)
