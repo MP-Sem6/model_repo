@@ -11,6 +11,7 @@ import pickle
 import streamlit as st
 #import sklearn
 
+'''
 import os
 # Title of the app
 st.title("File Directory Checker")
@@ -27,7 +28,7 @@ files_and_dirs = os.listdir(current_directory)
 st.write("Files and Directories:")
 for item in files_and_dirs:
     st.write(item)
-
+'''
 
 #model_path = os.path.join(os.path.dirname(__file__), "artifacts", "DT_model.sav")
 
