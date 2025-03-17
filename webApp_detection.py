@@ -6,13 +6,12 @@ Created on Mon Mar 17 02:02:06 2025
 """
 
 #main file to deploy
+
 import numpy as np
 import pickle
 import streamlit as st
-#import sklearn
+import os
 
-
-#import os
 # Title of the app
 #st.title("File Directory Checker")
 # Get the current working directory
@@ -31,14 +30,45 @@ import streamlit as st
 
 
 #model_path = os.path.join(os.path.dirname(__file__), "artifacts", "DT_model.sav")
-
 # Debugging: Check if the path is correct
 #st.write("Model Path:", model_path)
 #st.write("File Exists:", os.path.exists(model_path))
 
-# Load the model
+# 1. Decision tree
+dt_model = pickle.load(open("/artifacts/DT_model.sav", 'rb'))
+#model_path = os.path.join(os.path.dirname(__file__), "artifacts", "DT_model.sav")
 #with open(model_path, 'rb') as model_file:
-load_model = pickle.load(open("artifacts/DT_model.sav", 'rb'))
+#    dt_model = pickle.load(model_file)
+
+
+# 2. KNN
+knn_model = pickle.load(open("/artifacts/knn_model.sav", 'rb'))
+#modelknn_path = os.path.join(os.path.dirname(__file__), "artifacts", "knn_model.sav")
+#with open(modelknn_path, 'rb') as modelknn_file:
+#    knn_model = pickle.load(modelknn_file)
+
+
+# 3. NBayes
+nb_model = pickle.load(open("/artifacts/NBayes.sav", 'rb'))
+#modelnb_path = os.path.join(os.path.dirname(__file__), "artifacts", "NBayes.sav")
+#with open(modelnb_path, 'rb') as modelnb_file:
+#    nb_model = pickle.load(modelnb_file)
+
+
+# 4. Random Forest
+rf_model = pickle.load(open("/artifacts/Rforest.sav", 'rb'))
+#modelrf_path = os.path.join(os.path.dirname(__file__), "artifacts", "Rforest.sav")
+#with open(modelrf_path, 'rb') as modelrf_file:
+#    rf_model = pickle.load(modelrf_file)
+
+
+# 5. SVM
+svm_model = pickle.load(open("/artifacts/svm_model.sav", 'rb'))
+#modelsvm_path = os.path.join(os.path.dirname(__file__), "artifacts", "svm_model.pkl")
+#with open(modelsvm_path, 'rb') as modelsvm_file:
+#    svm_model = pickle.load(modelsvm_file)
+    
+#load_model = pickle.load(open("/artifacts/DT_model.sav", 'rb'))
 
 #List of the symptoms is listed here in list l1.
 l1=['back_pain','constipation','abdominal_pain','diarrhoea','mild_fever','yellow_urine',
@@ -75,7 +105,8 @@ disease=['Fungal infection', 'Allergy', 'GERD', 'Chronic cholestasis',
        '(vertigo) Paroymsal  Positional Vertigo', 'Acne',
        'Urinary tract infection', 'Psoriasis', 'Impetigo']
 
-def predict_disease(clf, symptoms):
+#predict function for Decision Tree
+def predict_dt(clf, symptoms):
     # Convert symptoms into a feature vector
     l2 = [1 if symptom in symptoms else 0 for symptom in l1]
     
@@ -93,27 +124,39 @@ def predict_disease(clf, symptoms):
     else:
         return "Error: Unexpected prediction output"
     
-def startt():
-    symptoms = []
+#predict function for KNN 
+def predict_knn(clf, symptoms):
+    l2 = [1 if symptom in symptoms else 0 for symptom in l1]
+    input_test = np.array(l2).reshape(1, -1)
+    predicted = clf.predict(input_test)[0]
+    return predicted if isinstance(predicted, str) else "Error: Unexpected prediction output"
 
-    # Mandatory input for the first two symptoms
-    for i in range(1, 3):  # Loop for the first two mandatory symptoms
-        symptom = input(f"Enter {i} symptom (mandatory): ")
-        symptoms.append(symptom)
+#predict function for Naive Bayes 
+def predict_nb(clf, symptoms):
+    l2 = [1 if symptom in symptoms else 0 for symptom in l1]
+    input_test = np.array(l2).reshape(1, -1)  # Reshape to match training data
+    predicted = clf.predict(input_test)[0]  # This is already the disease name
+    return predicted
 
-    # Optional input for the next three symptoms
-    for i in range(3, 6):  # Loop for the next three optional symptoms
-        symptom = input(f"Enter {i} symptom (optional, press Enter to skip): ")
-        if symptom:  # Only append if the user has entered a symptom
-            symptoms.append(symptom)
+#predict function for Random Forest
+def predict_rf(clf, symptoms):
+    l2 = [1 if symptom in l1 else 0 for symptom in l1]
+    input_test = np.array(l2).reshape(1, -1)  # Reshape to match training data
+    predicted = clf.predict(input_test)[0]
 
-    print(symptoms)
-    print(type(symptoms))
-    # Predicting the disease
-    predicted_disease = predict_disease(load_model, symptoms)
-    print(f"The predicted disease is: {predicted_disease}")
-    
-    return 1
+    if isinstance(predicted, str):  # If prediction is a string, convert it to index
+        predicted = disease.index(predicted) if predicted in disease else -1
+
+    return disease[predicted] if 0 <= predicted < len(disease) else "Not Found"
+
+
+#predict function for Support Vector Machine (SVM)
+def predict_svm(clf, symptoms):
+    l2 = [1 if symptom in symptoms else 0 for symptom in l1]
+    input_test = np.array(l2).reshape(1, -1)
+    predicted = clf.predict(input_test)[0]
+    return predicted if isinstance(predicted, str) else "Error: Unexpected prediction output"
+
 
 def main():
     #title for webpage
@@ -123,23 +166,36 @@ def main():
     # Mandatory input for the first two symptoms
     symptoms = []
     for i in range(1, 3):  # Loop for the first two mandatory symptoms
-        symptom = st.text_input(f"Enter {i} symptom (mandatory): ")
-        symptoms.append(symptom)
+        symptom = st.selectbox(f"Enter {i} symptom (mandatory): ",options=[''] + l1)
+        if symptom:  # Only append if the user has entered a symptom
+            symptoms.append(symptom)
 
     # Optional input for the next three symptoms
     for i in range(3, 6):  # Loop for the next three optional symptoms
-        symptom = st.text_input(f"Enter {i} symptom (optional, press Enter to skip): ")
+        symptom = st.selectbox(f"Enter {i} symptom (optional, press Enter to skip): ", options= [''] + l1)
         if symptom:  # Only append if the user has entered a symptom
             symptoms.append(symptom)
     # Predicting the disease
-    predicted_disease = ' '
+    #predicted_disease = ' '
     
     #button for prediction
     if st.button("Predict"):
-        predicted_disease = predict_disease(load_model, symptoms)
-        #print(f"The predicted disease is: {predicted_disease}")
+        st.write(f"The symptoms you have enterd: {symptoms}")
+        if len(symptoms) < 2:
+            st.error("Please select at least two mandatory symptoms.")
+        else:
+             predicted_dt = predict_dt(dt_model, symptoms)
+             st.success(f"Decision Tree Predicted: {predicted_dt}")
+             predicted_knn = predict_knn(knn_model, symptoms)
+             st.success(f"KNN model Predicted: {predicted_knn}")
+             predicted_nb = predict_dt(nb_model, symptoms)
+             st.success(f"Naive Bayes Predicted: {predicted_nb}")
+             predicted_rf = predict_dt(rf_model, symptoms)
+             st.success(f"Random Forest Predicted: {predicted_rf}")
+             predicted_svm = predict_dt(svm_model, symptoms)
+             st.success(f"SVM model Predicted: {predicted_svm}")
         
-    st.success(predicted_disease)
+    
     
 
 if __name__ == '__main__':
