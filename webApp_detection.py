@@ -71,28 +71,28 @@ svm_model = pickle.load(open("artifacts/svm_model.pkl", 'rb'))
 #load_model = pickle.load(open("/artifacts/DT_model.sav", 'rb'))
 
 #List of the symptoms is listed here in list l1.
-#l1=['back_pain','constipation','abdominal_pain','diarrhoea','mild_fever','yellow_urine',
-#    'yellowing_of_eyes','acute_liver_failure','fluid_overload','swelling_of_stomach',
-#    'swelled_lymph_nodes','malaise','blurred_and_distorted_vision','phlegm','throat_irritation',
-#    'redness_of_eyes','sinus_pressure','runny_nose','congestion','chest_pain','weakness_in_limbs',
-#    'fast_heart_rate','pain_during_bowel_movements','pain_in_anal_region','bloody_stool',
-#    'irritation_in_anus','neck_pain','dizziness','cramps','bruising','obesity','swollen_legs',
-#    'swollen_blood_vessels','puffy_face_and_eyes','enlarged_thyroid','brittle_nails',
-#    'swollen_extremeties','excessive_hunger','extra_marital_contacts','drying_and_tingling_lips',
-#    'slurred_speech','knee_pain','hip_joint_pain','muscle_weakness','stiff_neck','swelling_joints',
-#    'movement_stiffness','spinning_movements','loss_of_balance','unsteadiness',
-#    'weakness_of_one_body_side','loss_of_smell','bladder_discomfort','foul_smell_of urine',
-#    'continuous_feel_of_urine','passage_of_gases','internal_itching','toxic_look_(typhos)',
-#    'depression','irritability','muscle_pain','altered_sensorium','red_spots_over_body','belly_pain',
-#    'abnormal_menstruation','dischromic _patches','watering_from_eyes','increased_appetite','polyuria','family_history','mucoid_sputum',
-#    'rusty_sputum','lack_of_concentration','visual_disturbances','receiving_blood_transfusion',
-#    'receiving_unsterile_injections','coma','stomach_bleeding','distention_of_abdomen',
-#    'history_of_alcohol_consumption','fluid_overload','blood_in_sputum','prominent_veins_on_calf',
-#    'palpitations','painful_walking','pus_filled_pimples','blackheads','scurring','skin_peeling',
-#    'silver_like_dusting','small_dents_in_nails','inflammatory_nails','blister','red_sore_around_nose',
-#    'yellow_crust_ooze']
+l1=['back_pain','constipation','abdominal_pain','diarrhoea','mild_fever','yellow_urine',
+    'yellowing_of_eyes','acute_liver_failure','fluid_overload','swelling_of_stomach',
+    'swelled_lymph_nodes','malaise','blurred_and_distorted_vision','phlegm','throat_irritation',
+    'redness_of_eyes','sinus_pressure','runny_nose','congestion','chest_pain','weakness_in_limbs',
+    'fast_heart_rate','pain_during_bowel_movements','pain_in_anal_region','bloody_stool',
+    'irritation_in_anus','neck_pain','dizziness','cramps','bruising','obesity','swollen_legs',
+    'swollen_blood_vessels','puffy_face_and_eyes','enlarged_thyroid','brittle_nails',
+    'swollen_extremeties','excessive_hunger','extra_marital_contacts','drying_and_tingling_lips',
+    'slurred_speech','knee_pain','hip_joint_pain','muscle_weakness','stiff_neck','swelling_joints',
+    'movement_stiffness','spinning_movements','loss_of_balance','unsteadiness',
+    'weakness_of_one_body_side','loss_of_smell','bladder_discomfort','foul_smell_of urine',
+    'continuous_feel_of_urine','passage_of_gases','internal_itching','toxic_look_(typhos)',
+    'depression','irritability','muscle_pain','altered_sensorium','red_spots_over_body','belly_pain',
+    'abnormal_menstruation','dischromic _patches','watering_from_eyes','increased_appetite','polyuria','family_history','mucoid_sputum',
+    'rusty_sputum','lack_of_concentration','visual_disturbances','receiving_blood_transfusion',
+    'receiving_unsterile_injections','coma','stomach_bleeding','distention_of_abdomen',
+    'history_of_alcohol_consumption','fluid_overload','blood_in_sputum','prominent_veins_on_calf',
+    'palpitations','painful_walking','pus_filled_pimples','blackheads','scurring','skin_peeling',
+    'silver_like_dusting','small_dents_in_nails','inflammatory_nails','blister','red_sore_around_nose',
+    'yellow_crust_ooze']
 
-l1 = ['abdominal_pain', 'abnormal_menstruation', 'acute_liver_failure', 'altered_sensorium', 'back_pain', 'belly_pain', 'blackheads', 'bladder_discomfort', 'blood_in_sputum', 'bloody_stool', 'blurred_and_distorted_vision', 'blister', 'brittle_nails', 'bruising', 'chest_pain', 'coma', 'constipation', 'continuous_feel_of_urine', 'cramps', 'depression', 'diarrhoea', 'dischromic patches', 'distention_of_abdomen', 'dizziness', 'drying_and_tingling_lips', 'enlarged_thyroid', 'excessive_hunger', 'extra_marital_contacts', 'family_history', 'fast_heart_rate', 'fluid_overload', 'foul_smell_of urine', 'headache', 'hip_joint_pain', 'history_of_alcohol_consumption', 'increased_appetite', 'inflammatory_nails', 'internal_itching', 'irritability', 'irritation_in_anus', 'knee_pain', 'lack_of_concentration', 'loss_of_balance', 'loss_of_smell', 'malaise', 'mild_fever', 'movement_stiffness', 'mucoid_sputum', 'muscle_pain', 'muscle_weakness', 'neck_pain', 'obesity', 'pain_during_bowel_movements', 'pain_in_anal_region', 'painful_walking', 'palpitations', 'passage_of_gases', 'phlegm', 'polyuria', 'prominent_veins_on_calf', 'pus_filled_pimples', 'red_sore_around_nose', 'red_spots_over_body', 'redness_of_eyes', 'receiving_blood_transfusion', 'receiving_unsterile_injections', 'runny_nose', 'rusty_sputum', 'scurring', 'shortness_of_breath', 'silver_like_dusting', 'sinus_pressure', 'skin_peeling', 'slurred_speech', 'small_dents_in_nails', 'spinning_movements', 'stiff_neck', 'stomach_bleeding', 'swelled_lymph_nodes', 'swelling_joints', 'swelling_of_stomach', 'swollen_blood_vessels', 'swollen_extremeties', 'swollen_legs', 'throat_irritation', 'toxic_look(typhos)', 'unsteadiness', 'visual_disturbances', 'watering_from_eyes', 'weakness_in_limbs', 'weakness_of_one_body_side', 'yellow_crust_ooze', 'yellow_urine', 'yellowing_of_eyes']
+#l1 = ['abdominal_pain', 'abnormal_menstruation', 'acute_liver_failure', 'altered_sensorium', 'back_pain', 'belly_pain', 'blackheads', 'bladder_discomfort', 'blood_in_sputum', 'bloody_stool', 'blurred_and_distorted_vision', 'blister', 'brittle_nails', 'bruising', 'chest_pain', 'coma', 'constipation', 'continuous_feel_of_urine', 'cramps', 'depression', 'diarrhoea', 'dischromic patches', 'distention_of_abdomen', 'dizziness', 'drying_and_tingling_lips', 'enlarged_thyroid', 'excessive_hunger', 'extra_marital_contacts', 'family_history', 'fast_heart_rate', 'fluid_overload', 'foul_smell_of urine', 'headache', 'hip_joint_pain', 'history_of_alcohol_consumption', 'increased_appetite', 'inflammatory_nails', 'internal_itching', 'irritability', 'irritation_in_anus', 'knee_pain', 'lack_of_concentration', 'loss_of_balance', 'loss_of_smell', 'malaise', 'mild_fever', 'movement_stiffness', 'mucoid_sputum', 'muscle_pain', 'muscle_weakness', 'neck_pain', 'obesity', 'pain_during_bowel_movements', 'pain_in_anal_region', 'painful_walking', 'palpitations', 'passage_of_gases', 'phlegm', 'polyuria', 'prominent_veins_on_calf', 'pus_filled_pimples', 'red_sore_around_nose', 'red_spots_over_body', 'redness_of_eyes', 'receiving_blood_transfusion', 'receiving_unsterile_injections', 'runny_nose', 'rusty_sputum', 'scurring', 'shortness_of_breath', 'silver_like_dusting', 'sinus_pressure', 'skin_peeling', 'slurred_speech', 'small_dents_in_nails', 'spinning_movements', 'stiff_neck', 'stomach_bleeding', 'swelled_lymph_nodes', 'swelling_joints', 'swelling_of_stomach', 'swollen_blood_vessels', 'swollen_extremeties', 'swollen_legs', 'throat_irritation', 'toxic_look(typhos)', 'unsteadiness', 'visual_disturbances', 'watering_from_eyes', 'weakness_in_limbs', 'weakness_of_one_body_side', 'yellow_crust_ooze', 'yellow_urine', 'yellowing_of_eyes']
 
 
 disease=['Fungal infection', 'Allergy', 'GERD', 'Chronic cholestasis',
